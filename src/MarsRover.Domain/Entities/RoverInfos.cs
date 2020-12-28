@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MarsRover.Domain.Enums;
+using MarsRover.Domain.Extensions;
+using System;
+using System.Linq;
 
 namespace MarsRover.Domain.Entities
 {
@@ -12,8 +13,15 @@ namespace MarsRover.Domain.Entities
 
         public RoverInfos(string startInfos, string moveInfos)
         {
+            var validMoveCharacters = new char[] { 'L', 'R', 'M' };
+            var arrMoveInfos = moveInfos.Replace(" ", "").ToCharArray();
+
+            if (arrMoveInfos.Any(mi=>!validMoveCharacters.Contains(mi)))
+            {
+                throw new ArgumentException(ExeptionTypes.RoverInfos_StartPoint_DirectionLetterException.GetDescription());
+            }
             StartInfos = startInfos.Replace(" ", "").ToCharArray();
-            MoveInfos = moveInfos.Replace(" ", "").ToCharArray();
+            MoveInfos = arrMoveInfos;
         }
     }
 }

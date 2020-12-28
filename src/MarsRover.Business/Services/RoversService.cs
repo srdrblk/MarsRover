@@ -16,11 +16,15 @@ namespace MarsRover.Business.Services
         }
         public Rover CreateRover(RoverInfos roverInfos)
         {
+            if (roverInfos.StartInfos.Length != 3)
+            {
+                throw new Exception("Start point must have 3 value");
+            }
+
             var startPoint = new Point(roverInfos.StartInfos);
             var rover = new Rover(startPoint);
             Rovers.Add(rover);
             MoveRover(rover.Id, roverInfos.MoveInfos);
-            
             return rover;
         }
         public Rover MoveRover(Guid id, char[] moveInfos)

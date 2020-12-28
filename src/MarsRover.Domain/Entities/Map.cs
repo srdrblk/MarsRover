@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MarsRover.Domain.Enums;
+using MarsRover.Domain.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +23,18 @@ namespace MarsRover.Domain.Entities
         }
         public Map(string inputInfos)
         {
+            if (!inputInfos.Contains("\n") && !inputInfos.Contains("\r"))
+            {
+                throw new ArgumentException(ExeptionTypes.Map_SeparationMarkException.GetDescription());
+            }
             RoversInfos = new List<RoverInfos>();
             var arrInputInfos = inputInfos.Split(new[] { "\n", "\r" }, StringSplitOptions.None).Where(i=>!String.IsNullOrWhiteSpace(i)).ToArray();
+
+            if (arrInputInfos.Length<3 && arrInputInfos.Length%2!=1)// map must have size infos and 1(min) (rover)=> (start point and move characters)
+            {
+                throw new ArgumentException(ExeptionTypes.Map_CountExeption.GetDescription());
+            }
+
             var roverCount = (arrInputInfos.Length - 1);
             SetSize(arrInputInfos[0]);
 
@@ -40,7 +52,6 @@ namespace MarsRover.Domain.Entities
         }
         private void SetRoverInfos(string startInfos, string moveInfos)
         {
-            
             RoversInfos.Add(new RoverInfos(startInfos, moveInfos));
         }
      

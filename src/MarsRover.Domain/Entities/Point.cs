@@ -11,15 +11,15 @@ namespace MarsRover.Domain.Entities
 
         public int Y { get; private set; }
 
-        public  Directions Direction { get; set; }
+        public Directions Direction { get; set; }
 
         public Point(char[] pointInfos)
         {
-            X =Convert.ToInt32(pointInfos[0].ToString());
+            X = Convert.ToInt32(pointInfos[0].ToString());
             Y = Convert.ToInt32(pointInfos[1].ToString());
             switch (pointInfos[2].ToString())
             {
-               case "N":
+                case "N":
                     Direction = Directions.N;
                     break;
                 case "E":
