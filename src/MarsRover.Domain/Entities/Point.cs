@@ -1,4 +1,5 @@
 ﻿using MarsRover.Domain.Enums;
+using MarsRover.Domain.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -61,6 +62,10 @@ namespace MarsRover.Domain.Entities
                     break;
                 default:
                     break;
+            }
+            if (X<0 || Y<0)
+            {
+                throw new ArgumentException(ExeptionTypes.Point_OutOfRangeException.GetDescription());
             }
         }
     }

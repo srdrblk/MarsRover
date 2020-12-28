@@ -39,7 +39,15 @@ namespace MarsRover.Business.Common
             }
 
             ListRoverOutput listRoverOutput = new ListRoverOutput();
-            listRoverOutput.EndPoints = roversService.GetAll().Select(r => r.CurrentPoint.X+" "+r.CurrentPoint.Y+" "+r.CurrentPoint.Direction.ToString()).ToList();
+            listRoverOutput.EndPoints = new List<string>();
+            foreach (var item in roversService.GetAll())
+            {
+                var coordinates = item.CurrentPoint.X + " " + item.CurrentPoint.Y + " " + item.CurrentPoint.Direction.ToString();
+                if (item.CurrentPoint.X > map.XLength || item.CurrentPoint.Y > map.YLength)
+                    coordinates += "   (Out Of Map)";
+                listRoverOutput.EndPoints.Add(coordinates);
+            }
+    
             return listRoverOutput;
         }
 
