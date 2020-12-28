@@ -12,6 +12,9 @@ namespace MarsRover.Domain.Enums
         [Description("Information must consist of at least 3 lines and must be an odd number!")]
         Map_CountExeption,
 
+        [Description("Information can not be null!")]
+        Map_NullExeption,
+
         [Description("input information must start at new line(must contains '/\n' or '/\r')!")]
         Map_SeparationMarkException,
 

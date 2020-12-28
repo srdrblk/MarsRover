@@ -25,18 +25,9 @@ namespace MarsRover.Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //services.AddControllers().AddJsonOptions(options => {
-            //    options.JsonSerializerOptions.PropertyNamingPolicy = null;
-            //    options.JsonSerializerOptions.DictionaryKeyPolicy = null;
-
-            //});
-            // services.AddSingleton<>
             services.AddSingleton<IMapService, MapService>();
             services.AddSingleton<IRoversService, RoversService>();
             services.AddMediatR(typeof(CreateMapHandler).Assembly);
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-          //  services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
             services.AddControllersWithViews();
         }
 

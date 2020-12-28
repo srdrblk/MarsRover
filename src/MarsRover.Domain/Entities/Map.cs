@@ -23,6 +23,10 @@ namespace MarsRover.Domain.Entities
         }
         public Map(string inputInfos)
         {
+            if (String.IsNullOrEmpty(inputInfos))
+            {
+                throw new ArgumentException(ExeptionTypes.Map_NullExeption.GetDescription());
+            }
             if (!inputInfos.Contains("\n") && !inputInfos.Contains("\r"))
             {
                 throw new ArgumentException(ExeptionTypes.Map_SeparationMarkException.GetDescription());

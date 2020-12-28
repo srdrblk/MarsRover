@@ -1,15 +1,29 @@
-﻿
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th style="width: 40%;">
+                Input
+            </th>
+            <th style="width: 30%;">
 
-<div class="row">
-    <label>Input</label>
-    <div class="col-md-5">
-        <textarea id="inputInfos" name="inputInfos" cols="20" rows="10"></textarea>
-        <input class="btn btn-secondary" onclick="setInfos()" value="Run" />
-    </div>
-    <label>Output</label>
-    <div class="col-md-5" style="border:dotted">
-        <ul id="outputInfos" name="outputInfos">
-        </ul>
-
-    </div>
-</div>
+            </th>
+            <th style="width: 30%;">
+                OutPut
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td >
+                    <textarea id="inputInfos" name="inputInfos" cols="50" rows="15"></textarea>
+                </td>
+                <td >
+                    <input class="btn btn-secondary" onclick="setInfos()" value="Run" />
+                </td>
+                <td style="border:dotted">
+                    <ul id="outputInfos" name="outputInfos">
+                    </ul>
+                </td>
+            </tr>
+    </tbody>
+</table>

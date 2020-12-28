@@ -9,6 +9,16 @@ namespace MarsRover.Domain.UnitTest.Entities
     public class MapTests
     {
         [Fact]
+        public void Map_ShouldThrowExeption_When_InputInfos_IsNull()
+        {
+            var inputInfos = "";
+
+            Action act = () => new Map(inputInfos);
+
+            ArgumentException exception = Assert.Throws<ArgumentException>(act);
+            Assert.Equal(ExeptionTypes.Map_NullExeption.GetDescription(), exception.Message);
+        }
+        [Fact]
         public void Map_ShouldThrowExeption_When_InputInfos_HaveTwoLine()
         {
             var inputInfos = "5 5\n1 2 N";
